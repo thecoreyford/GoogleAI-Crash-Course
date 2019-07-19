@@ -26,17 +26,17 @@ g = tf.Graph()
 with g.as_default():
 # Assemble a graph consisting of three operations. 
 # (Creating a tensor is an operation.)
-x = tf.constant(8, name="x_const")
-y = tf.constant(5, name="y_const")
-z = tf.constant(4, name="z_const")
-my_sum = tf.add(x, y, name="x_y_sum")
-new_sum = tf.add(my_sum, z, name="x_y_z_sum")
+    x = tf.constant(8, name="x_const")
+    y = tf.constant(5, name="y_const")
+    z = tf.constant(4, name="z_const")
+    my_sum = tf.add(x, y, name="x_y_sum")
+    new_sum = tf.add(my_sum, z, name="x_y_z_sum")
 
 # Now create a session.
 # The session will run the default graph.
 with tf.Session() as sess:
-# Task 3: Ensure the program yields the correct grand total.
-print(new_sum.eval())```
+    print(new_sum.eval())
+```
 
 ## Exercise 2:
 ```python
