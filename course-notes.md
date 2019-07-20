@@ -17,3 +17,22 @@ Think about label reliability!
 
 Useful features are quantifiable - subjective non measurables such as "adoration" are not!
 
+--
+
+# Descending into ML
+**Linear regression** is a method for finding the strait line (or hyperplane) of best fit.
+
+**y=mx+c** is instead refered to as **y=wx + b** with **w** meaning **weights** and **b** meaning **bias**. 
+
+A subscript may be used as we could be in more than 1 dimenson.
+
+Loss is showing how well our line is doing at predicting any given example (different between prediction and true value for example).
+
+### A convenient loss function: L<sup>2</sup> Loss (or squared error)
+* square of the difference between prediction and label 
+* (observation - prediction)<sup>2</sup>
+* (y - y<sup>'</sup>)<sup>2</sup>
+
+
+
+
