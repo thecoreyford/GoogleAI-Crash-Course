@@ -17,7 +17,7 @@ Think about label reliability!
 
 Useful features are quantifiable - subjective non measurables such as "adoration" are not!
 
---
+---
 
 # Descending into ML
 **Linear regression** is a method for finding the strait line (or hyperplane) of best fit.
