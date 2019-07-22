@@ -53,11 +53,58 @@ Likely to want to do this over a whole data set (sum - somethimes averaged)! I.e
 
 # Reducing Loss 
 
+### How do we reduce loss?
+* **Hyperparameters** are configuration settings used to tune how the model is trained. 
+*  Derivative of (y-y<sup>'</sup>) with respect to the weights and biases  (using y=wx+b) tells us how loss changes for a given example.
+    * simple to compute and convex
+* Hence, repeatably take small steps in direction that minimises loss 
+    * called **gradient steps** (but really negative gradient steps.
+    * Strategy is called gradient descent
+* **Learning Rate** (sometimes step size) is how much you step through the curve (often scalar).
+Plot Loss against *some variable* to help visualise and explain this!
 
+*Convex* curves (live a bowl) will only have one minimum so the weights can start anywhere!
+*Non-convex* curves (like egg crates) will have more than one minimum, so their is a strong dependency on initial values [neural nets are notoriously like this!!].
 
+* **Stochastic Gradient Descent:** one example at a time
+* **Mini-Batch Gradient Descent:** batches of 10-1000
+    * Loss & gradients are averaged over the batch
 
+## An Iterative Approach
+Like going hot hot hot colder colder hotter hotter ... 
 
+![iterative approach to training model](https://developers.google.com/machine-learning/crash-course/images/GradientDescentDiagram.svg)
 
+This keeps happening until rate of change is slow (or lowest possible loss))!
 
+## Gradient Descent 
 
+* When there are multiple weights, the gradient is a vector of partial derivatives with respect to the weights.
+*Note that a gradient is a vector, so it has both of the following characteristics:*
+* a direction
+* a magnitude
+
+As far as I understand the steps esensially are:
+1. Knowing what the loss is, pick a value for a parameter: i.e. *w<sub>1</sub>*
+2. Figure out the gradient of this point. This is the *derivate* (or **"m"**).
+3. As the gradient always points towards the steepest increase in loss function, get the negative gradient.
+4. Then add *some fraction* (scalar) to the gradient to move closer to the minimum. 
+
+## Learning Rate
+```c++
+If (step size is too small) {
+    //takes forever 
+} else if (step size is too big) {
+    // will jump around and overshoot the minimum
+} else {
+    // goldilocks
+    // related to how flat the loss function is 
+    // if gradient is small can try a larger learning rate!
+}
+```
+**BONUS:**
+The ideal learning rate in one-dimension is (the inverse of the second derivative of f(x) at x).
+The ideal learning rate for 2 or more dimensions is the inverse of the Hessian (matrix of second partial derivatives).
+
+## Stochastic Gradient Descent
 
