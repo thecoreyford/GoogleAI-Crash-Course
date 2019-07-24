@@ -81,8 +81,8 @@ This keeps happening until rate of change is slow (or lowest possible loss))!
 
 * When there are multiple weights, the gradient is a vector of partial derivatives with respect to the weights.
 *Note that a gradient is a vector, so it has both of the following characteristics:*
-* a direction
-* a magnitude
+    * a direction
+    * a magnitude
 
 As far as I understand the steps esensially are:
 1. Knowing what the loss is, pick a value for a parameter: i.e. *w<sub>1</sub>*
@@ -92,7 +92,7 @@ As far as I understand the steps esensially are:
 
 ## Learning Rate
 ```c++
-If (step size is too small) {
+if (step size is too small) {
     //takes forever 
 } else if (step size is too big) {
     // will jump around and overshoot the minimum
@@ -104,7 +104,38 @@ If (step size is too small) {
 ```
 **BONUS:**
 The ideal learning rate in one-dimension is (the inverse of the second derivative of f(x) at x).
+
 The ideal learning rate for 2 or more dimensions is the inverse of the Hessian (matrix of second partial derivatives).
 
 ## Stochastic Gradient Descent
+
+*Batch* is the total number of examples used to calculate the gradient in a single iteration.
+
+Large data sets would take ages to compute, however.
+
+Lets get the right gradient on *average* through choosing examples at random from our data set. 
+
+**Stochastic gradient descent (SGD)** takes this idea to the extreme--it uses only a single example (a batch size of 1) per iteration.
+
+**Mini-batch stochastic gradient descent (mini-batch SGD)** is a compromise between full-batch iteration and SGD. A mini-batch is typically between 10 and 1,000 examples.
+
+
+---
+
+# First Steps With TF 
+
+Tensor Flow is a General graph based API. 
+    
+This focuses on the tf.estimator API whitch is a high level abstraction making common tasks easier.
+
+Tensflow consists of the following two components:
+* a **graph** protocol buffer
+* a runtime that executes the (distributed) graph
+Kinda like how the python interpreters runs python code (the graph is executed by the runtime.)
+
+**NOTE:** this is for many platforms (run on CPU, GPU, and TPU).
+
+Works with *Scikit-learn* which is an open source ML python library.
+
+
 
