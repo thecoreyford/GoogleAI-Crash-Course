@@ -1,4 +1,4 @@
-#leaning-tensorflow.py
+#basic-steps.py
 
 #================================================================
 #INPUT_FUNCTION

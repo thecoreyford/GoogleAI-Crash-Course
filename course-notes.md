@@ -137,5 +137,20 @@ Kinda like how the python interpreters runs python code (the graph is executed b
 
 Works with *Scikit-learn* which is an open source ML python library.
 
+---
 
+# Generalization
+
+* Do not overfit -> new data may overstep the "fancy" line
+    * A model should be as simple as possible, so that a good empirical result is not due to peculiarities in our sample
+* Empiricall Strategys
+    * Training-set and Test-set ("Test Set methodology")
+* Pull from the same distribution!!!!
+    * UNLESS... fashions change - distibution may have to change
+    * distributions may change over time also (e.g. shopping seasons change)
+    
+    
+    ---
+    
+    # Training and Test Sets
 
