@@ -150,7 +150,62 @@ Works with *Scikit-learn* which is an open source ML python library.
     * distributions may change over time also (e.g. shopping seasons change)
     
     
-    ---
+---
+
+# Training and Test Sets
+
+* Divide one set into one for training and one for test.
+* Do a randomize!
+
+
+* Larger training set the better the model will learn. 
+    * but....
+* Larger the test set the better confidence in the evaluation metrics.
+    * A large data set will mean we can have good confidence intervals with smaller test set.
+* **Do not train on test data! Double check before throwing a party!**
+
+
+* Doing many rounds of this procedure might cause us to implicitly fit to the peculiarities of our specific test set.
+
+---
+
+# Validation Set 
+
+* By partictioning the data set into 3 sets
+    * Test set 
+    * Training set
+    * and Validation set
+* ...you can ensure that you don't overfit to a single "test set"
+
+* Meaning, evaluate model with a *validation set* and confirm the results with the *test set*.
+
+---
+
+# Representation
+
+* **Feature engineering** turing raw data into a feature vector. 
+* **One(multi)-hot encoding** is using a binary vector of length of categorical features, where applicable elements are set to "1".
+    * If this is for a large number of categories you can use a [**sparse representation**](https://developers.google.com/machine-learning/glossary/#sparse_representation). 
+
+
+## Qualities of good features
+
+* **Avoid rarely used discrete feature values** (appear ~than 5 times)
+* **Prefer clear and obvious meanings** (i.e. house_age: 1234538 is horrific)
+* **Remove error data** such as "-1" appearing when a user dosen't awnser a question
+    * *Instead add a question_not_defined param*
+* **Avoid a feature name changing over time** 
+
+## Cleaning data
+
+* Scale values (likey to smaller floating point numbers)
+* Handle extreme outliers
+    * Clip values 
+* Bin values between a < value <= b 
+* Scrubbing 
+    * ommited values, duplicates, bad labels, human errors
     
-    # Training and Test Sets
+---
+
+
 
