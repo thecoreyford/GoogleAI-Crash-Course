@@ -207,5 +207,53 @@ Works with *Scikit-learn* which is an open source ML python library.
     
 ---
 
+# Feature Crosses
 
+**Synthetic feature** or **feature cross** is a feature made by multipling two or more other features. 
 
+* Supplementing scaled linear models with feature crosses has traditionally been an efficient way to train on massive-scale data sets.
+
+---
+
+# Regularization: Simplicity
+
+"Not trusting your samples too much!"
+
+Want to generalize on valdation data, don't want it to go up! NO OVERFITTING!
+
+Regularization avoids overfitting!
+
+Model complexity??  prefer smaller wates
+
+Loss becomes *complexity(model) + loss (Data | model)*
+
+**Loss:** Aiming for low training error
+**Lambada:** Scalar value that controls how weights are balanced 
+**Weights:** square of l2 norm
+
+## L<sub>2</sub> Regularization
+
+* **Structural risk minimization:** minimizing loss plus complexity 
+
+*  **L2 regularization formula**:  defines the regularization term as the sum of the squares of all the feature weights.
+
+## Lambda 
+
+(regularization rate)
+
+A value you multiply the regularization term by. 
+
+Performing L2 regularization has the following effect on a model
+* Encourages weight values toward 0 (but not exactly 0)
+* Encourages the mean of the weights toward 0, with a normal (bell-shaped or Gaussian) distribution.
+
+```c++
+if (lambda is too high) {
+// model is simple, run the risk of "underfitting""
+} else if (lambda is too low) {
+// run risk of overfitting
+}
+```
+
+* Encourages correlated values to be equal 
+* Encourages noise to be as close to zero as possible
