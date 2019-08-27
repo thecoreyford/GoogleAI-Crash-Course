@@ -257,3 +257,26 @@ if (lambda is too high) {
 
 * Encourages correlated values to be equal 
 * Encourages noise to be as close to zero as possible
+
+
+---
+
+# Logistic Regression
+
+* **Prediction method that gives well calibrated probabilities!**
+* y<sup>'</sup> = 1 / 1 + e<sup>-(w<sup>t</sup>x+b)</sup>
+    * where x is faimilar linear model 
+    * 1+e.... : Squish through a sigmoid
+* Squared loss function won't cut it so we use LogLoss (somewhat similar to Shannons entropy measure)
+* Regulation or early stopping will make sure we don't spend forever driving towards zero!
+
+* Very fast training and prediction
+* Short / wide models use lots of RAM
+
+## [Loss function for logistic regression](https://developers.google.com/machine-learning/crash-course/logistic-regression/model-training) 
+* Each label value must be either a **0** or a **1**!
+
+---
+
+
+
