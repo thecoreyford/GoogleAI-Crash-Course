@@ -278,5 +278,79 @@ if (lambda is too high) {
 
 ---
 
+# Classification
 
+* **Classification Threshold** above value "its spam", below value "isn't spam".
+
+## True vs. False and Positive vs. Negative
+
+* **True Positive** Wolf threatend. Shepard said "Wolf. Shepard is hero.
+* **False Positive** Wolf not threatend. Shepard said "Wolf. Shepard is numpty.
+* **False Negative** Wolf threatend. Shepard said nothing. Wolf ate sheep.
+* **True Negative** Wolf not threatend. Shepard said "Wolf. Everyone is fine!
+
+Where TP = True Positives, TN = True Negatives, FP = False Positives, and FN = False Negatives.
+
+## Accuracy
+
+* **Accuracy** = number of correct predictions / total number of predictions.
+    * ...or using true and false positives.
+* **Accuracy** = TP + TN / TP + TN + FP + FN
+
+However, while this may give a good accuracy at first glance, it is possible that this only captures true positives - or have a result no better than one with no redictive ability. 
+
+The webage gives and example using malignant and benign tumors.
+
+* **class-imbalanced data set** - there is a significant disparity between the number of positive and negative labels
+
+So instead we look at...
+
+### Precision 
+* What proportion of positive identifications were actually correct? 
+* Precission = TP / TP + FP
+
+### Recall
+* What proportion of actual positives was identified correctly? 
+* Recall = TP / TP + FN
+
+Careful as changing the threshold can be create inverse changes between Precision and Recall. 
+
+## ROC Curve and AUC
+
+* **ROC curve*** (receiver operating characteristic curve) is a graph showing the performance of a classification model at all classification thresholds. It plots recall (true positive rate) against opposite (false positive rate).
+* TRUE POSITIVE RATE = TP / TP + FN
+* FALSE POSITIVE RATE = FP / FP + TN
+
+An ROC plots these for different classification thresholds.
+We could help do a logistic repgression and calculate these for many different classification thresholds. However, a sorting-based algorithm can do this efficently for us!!!!
+
+#### AUC: Area Under the ROC Curve
+* AUC easures the entire two-dimensional area underneath the entire ROC curve (think integral calculus) from (0,0) to (1,1).
+
+* Say... Log Reg Output = R, R, R, R, R, R, R, G, R, G, R, G, G, G, G, G, G, G 
+    * R = Red; G = Green
+    * AUC represents the probability that a random positive (green) example is positioned to the right of a random negative (red) example.
+    
+* Pros and Cons...
+    * PRO: **scale-invariant**, how well preditions are ranked not their values
+    * PRO: **classification-threshold-invariant**: don't have to try lots of classification thresholds
+    * CON: **Scale invariance is not always desirable.** For example, sometimes we really do need well calibrated probability outputs, and AUC won’t tell us about that.
+    * CON: **Classification-threshold invariance is not always desirable.** E.g. better to accidentally classify a spam as not spam as opposed to putting a genuine important email in spam!
+    
+## Prediction Bias
+
+In theory logistic regression should be unbiased. That is: "average of predictions" ~= "average of observations"
+
+* **prediction bias** = average of predictions - average of labels in data set 
+> For example, let's say we know that on average, 1% of all emails are spam. If we don't know anything at all about a given email, we should predict that it's 1% likely to be spam. Similarly, a good spam model should predict on average that emails are 1% likely to be spam. (In other words, if we average the predicted likelihoods of each individual email being spam, the result should be 1%.) If instead, the model's average prediction is 20% likelihood of being spam, we can conclude that it exhibits prediction bias." 
+
+*Possible root causes of prediction bias are:
+    *Incomplete feature set
+    *Noisy data set
+    *Buggy pipeline
+    *Biased training sample
+    *Overly strong regularization
+    
+Prediction bias for logistic regression only makes sense when grouping enough examples together to be able to compare a predicted value (for example, 0.392) to observed values (for example, 0.394).
+Hence, use **buckets** (linear or quantiles).
 
