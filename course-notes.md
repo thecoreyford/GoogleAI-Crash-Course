@@ -167,7 +167,7 @@ Works with *Scikit-learn* which is an open source ML python library.
 
 * Doing many rounds of this procedure might cause us to implicitly fit to the peculiarities of our specific test set.
 
----
+https://developers.google.com/machine-learning/crash-course/images/WorkflowWithValidationSet.svg
 
 # Validation Set 
 
@@ -178,6 +178,8 @@ Works with *Scikit-learn* which is an open source ML python library.
 * ...you can ensure that you don't overfit to a single "test set"
 
 * Meaning, evaluate model with a *validation set* and confirm the results with the *test set*.
+
+![validation set processl](https://developers.google.com/machine-learning/crash-course/images/WorkflowWithValidationSet.svg)
 
 ---
 
