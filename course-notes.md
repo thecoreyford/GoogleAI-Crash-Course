@@ -346,13 +346,40 @@ In theory logistic regression should be unbiased. That is: "average of predictio
 * **prediction bias** = average of predictions - average of labels in data set 
 > For example, let's say we know that on average, 1% of all emails are spam. If we don't know anything at all about a given email, we should predict that it's 1% likely to be spam. Similarly, a good spam model should predict on average that emails are 1% likely to be spam. (In other words, if we average the predicted likelihoods of each individual email being spam, the result should be 1%.) If instead, the model's average prediction is 20% likelihood of being spam, we can conclude that it exhibits prediction bias." 
 
-*Possible root causes of prediction bias are:
-    *Incomplete feature set
-    *Noisy data set
-    *Buggy pipeline
-    *Biased training sample
-    *Overly strong regularization
+* Possible root causes of prediction bias are:
+    * Incomplete feature set
+    * Noisy data set
+    * Buggy pipeline
+    * Biased training sample
+    * Overly strong regularization
     
 Prediction bias for logistic regression only makes sense when grouping enough examples together to be able to compare a predicted value (for example, 0.392) to observed values (for example, 0.394).
 Hence, use **buckets** (linear or quantiles).
 
+---
+
+# Regularisation: Sparsity
+
+Using feature crosses can lead to an incredibly big feature space.
+
+This means RAM can become huge, or you can get "noisy" data.
+
+### L<sub>0</sub> Regularisation -> drive weights to zero (removing them)
+Non-convent optimization; NP-hard
+
+Hence, we relax to...
+
+### L<sub>1</sub> Regularisation
+* Penalize sum of abs(weights)
+* Convex problem
+* Encourage sparsity unlike L<sub>2</sub>
+
+## L<sub>1</sub> vs L<sub>2</sub>
+L2 and L1 penalize weights differently:
+* L2 penalizes weight2.
+* L1 penalizes |weight|.
+Consequently, L2 and L1 have different derivatives:
+* The derivative of L2 is 2 * weight.
+* The derivative of L1 is k (a constant, whose value is independent of weight).
+
+Hence, L1 can get to zero (without zeroing out because of floating point precision limitations).
