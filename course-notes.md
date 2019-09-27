@@ -383,3 +383,107 @@ Consequently, L2 and L1 have different derivatives:
 * The derivative of L1 is k (a constant, whose value is independent of weight).
 
 Hence, L1 can get to zero (without zeroing out because of floating point precision limitations).
+
+---
+
+# Neural Networks 
+We want models that learn non-linearities!
+
+You need to add in a non-linearity, not just more layers!
+
+One common is called Relu (rectified linear unit): *F(x)=max(0,x)*
+* Above zero linear, below non-linear 
+* others sig, tanh etc...
+
+Can stack layers up:
+* trained with back propagation (lets you do gradient descent of complex model)
+
+## Sprial
+
+* Lots of neurons and lots of layers, slow computationally, not very interpretable - how do nodes contribute.
+
+* Reducing learning rate for smoother loss curve, less neurons gives....
+    * ... faster learning, but similar test loss. 
+    
+* No regularization - adding will create a smoother loss cure (less spikey).
+
+* Change batch size & learning rate (less jumping around alot).
+
+
+---
+
+# Training Neural Nets: Backpropagation 
+
+You don't need to know about the implementation (but you may like it anyway!)!
+
+Remember that a gradient is a vector of partial derivatives with respect to the weights.
+
+It relies on the ideas of gradients -> differential functions!!!!!
+
+Gradients can vanish:
+* Relus are useful here
+* Limit depth of model (signal vs noise)
+
+Gradients can EXPLODE:
+* Learning rate too high can get carzy instabilities NANS
+
+Relus can die:
+* everything below can't be propegated back through 
+
+Useful to have normalised inputs (-1 to 1), helping gradient descent converge. 
+* linear scaling
+* hard cap
+* log scaling 
+
+## Dropout Regularization 
+* Remove units in a network for a single gradient step @ a given probability 
+* Key advance!
+
+---
+
+# Multi-class Neural Nets
+
+* Models that can predict many different things (unlike logistic regression).
+    * apple, banna, car, fish, dog, camel, iPhone... 
+    
+Logit layer!
+    
+One-Vs-All (for Multi-Class)
+* One logistic-regression output node for each possible class
+* Can do in a deep-network (different output nodes)
+
+Sometimes we will know if the output if for ONE particular class (either a pear or apple or banna).
+Hence, notes should all sum to one -> using SOFTMAX.
+
+**SoftMax**
+When we have a single-label multi class 
+
+**Logistic Regression** 
+When we have a multi-label classification strategy, not summing to 1 
+
+**Single-label multi class solutions:**
+* Full SoftMax
+    * Brute force; calculates for all classes
+* Candidate Sampleing
+    * Train output notes for positive labels, but only for random sample of negatives
+    
+---
+
+# Embeddings 
+**Motivation:**
+* 1 million movies, half million users seens some 
+* Want to reccomend movies 
+
+Organising on one line dosen't quite work 
+
+Two dimensions works alittle better... three work even better.. etc...
+
+Supervised information will tailor the embeddings to be learn't for the desired task. 
+Hidden layer + one unit per dimension. 
+
+**Input Representation** 
+1. Build a dictionarry mapping each feature to an int from 0 to no of movies - 1
+2. Embbedem (Sparse vector encoding)
+
+#### TODO: Collaborative Filtering 
+
